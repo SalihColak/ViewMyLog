@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_more"
+        android:icon="@drawable/ic_more_vert_white_24dp"
+        android:title=""
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/logactivity"
+                android:icon="@drawable/ic_close_black_24dp"
+                android:title="LogActivity"
+                app:showAsAction="ifRoom">
+            </item>
+            <item
+                android:id="@+id/logpopup"
+                android:icon="@drawable/ic_close_black_24dp"
+                android:title="PopupWindow"
+                app:showAsAction="ifRoom">
+            </item>
+            <item
+                android:id="@+id/logtoast"
+                android:icon="@drawable/ic_close_black_24dp"
+                android:title="Log as Toast"
+                app:showAsAction="ifRoom">
+            </item>
+            <item
+                android:id="@+id/lifecycle"
+                android:icon="@drawable/ic_lifecycle_black_24dp"
+                android:title="Lifecycle Track"
+                app:showAsAction="ifRoom">
+            </item>
+            <item
+                android:id="@+id/userSettings"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="Einstellungen"
+                app:showAsAction="ifRoom">
+            </item>
+        </menu>
+    </item>
+</menu>

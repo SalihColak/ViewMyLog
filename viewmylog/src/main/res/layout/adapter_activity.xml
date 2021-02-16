@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/aLogBackground"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:weightSum="100">
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="15"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/aPid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="21872"
+            android:maxLines="1"
+            android:textColor="#000000"
+            android:gravity="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/aTid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="21872"
+            android:maxLines="1"
+            android:textColor="#000000"
+            android:gravity="center">
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="20"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/aLogTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tag"
+            android:maxLines="1"
+            android:textColor="#000000">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="65"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/aLogMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Log Message"
+            android:maxLines="1"
+            android:textColor="#000000">
+
+        </TextView>
+
+    </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#1AFFFFFF"/>
+</LinearLayout>

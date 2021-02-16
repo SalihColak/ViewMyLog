@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/filter"
+        android:icon="@drawable/ic_outline_search_white_24"
+        android:title="@string/filter"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_more_a"
+        android:icon="@drawable/ic_more_vert_white_24dp"
+        android:title=""
+        app:showAsAction="always">
+
+        <menu>
+            <item
+                android:id="@+id/stopContinue"
+                android:icon="@drawable/ic_baseline_pause_24"
+                android:title="@string/stopRead"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/save"
+                android:icon="@drawable/ic_outline_file_download_black_24"
+                android:title="@string/save"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/delete"
+                android:icon="@drawable/ic_baseline_delete_24"
+                android:title="@string/delete"
+                app:showAsAction="ifRoom" />
+        </menu>
+
+    </item>
+
+
+
+
+
+</menu>

@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">ViewMyLog</string>
+    <string name="title_activity_settings">Einstellungen</string>
+
+    <!-- Preference Titles -->
+    <string name="appearance_header">Aussehen PopupWindow</string>
+    <string name="filter_header">Log Filter</string>
+    <string name="callback_header">Callback-Aufrufe</string>
+
+    <!-- PopupWindow Preferences -->
+    <string name="opacity_title">Deckkraft</string>
+    <string name="size_title">Größe</string>
+    <string name="textsize_title">Textgröße</string>
+    <string name="default_textsize">12</string>
+
+    <!-- Filter Preferences -->
+    <string name="negative_logfilter_title">Logs mit diesen Tags nicht anzeigen</string>
+    <string name="loglevel_title">Log Level</string>
+
+    <!-- Callback Preferences -->
+    <string name="log_callback_title">Callbackmethoden-Aufrufe zuzätzlich loggen</string>
+    <string name="log_callback_tag_title">Tag des Logs</string>
+
+    <!-- Sonstige Strings -->
+    <string name="filter">Filter</string>
+    <string name="stopRead">Pause</string>
+    <string name="continueRead">Weiter</string>
+    <string name="save">Speichern</string>
+    <string name="delete">Löschen</string>
+</resources>

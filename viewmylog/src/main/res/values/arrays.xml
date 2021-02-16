@@ -1,0 +1,54 @@
+<resources>
+    <!-- PopupWindow-Size Preference -->
+    <string-array name="pw_size_entries">
+        <item>Sehr klein</item>
+        <item>Klein</item>
+        <item>Mittel</item>
+        <item>Groß</item>
+        <item>Sehr groß</item>
+    </string-array>
+
+    <string-array name="pw_size_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <!-- PopupWindow-TextSize Preference -->
+    <string-array name="pw_textsize_entries">
+        <item>Extra klein (8sp)</item>
+        <item>Klein (10sp)</item>
+        <item>Mittel (12sp)</item>
+        <item>Groß (14sp)</item>
+        <item>Extra groß (16sp)</item>
+    </string-array>
+
+    <string-array name="pw_textsize_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <!-- Log-Level Preference -->
+    <string-array name="loglevel_entries">
+        <item>Verbose</item>
+        <item>Debug</item>
+        <item>Info</item>
+        <item>Warn</item>
+        <item>Error</item>
+        <item>What a Terrible Failure</item>
+    </string-array>
+
+    <string-array name="loglevel_values">
+        <item>V</item>
+        <item>D</item>
+        <item>I</item>
+        <item>W</item>
+        <item>E</item>
+        <item>WTF</item>
+    </string-array>
+</resources>

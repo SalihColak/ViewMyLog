@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pwLogDetailBackground"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue">
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:layout_weight="10"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/pwLogDetailClose"
+                android:src="@drawable/ic_close_white_24dp"
+                android:background="?android:selectableItemBackground"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </ImageButton>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="80"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/pwLogDetailTag"
+                android:text="HereIsALogTag"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="10"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/pwDividerTop"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#FFFFFF"/>
+
+    <LinearLayout
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:layout_weight="5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_weight="10"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/pwLogDetailPidDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PID: "
+                android:textColor="#fff">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/pwLogDetailTidDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TID: "
+                android:textColor="#fff">
+
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_weight="15"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/pwLogDetailPid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21034"
+                android:textColor="#fff">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/pwLogDetailTid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21034"
+                android:textColor="#fff">
+
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="40"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/pwLogDetailLevelDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text="Level">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/pwLogDetailLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text="Debug">
+
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="30"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/pwLogDetailDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text="02.02.2021">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/pwLogDetailTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text="15:56h 21s">
+
+            </TextView>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/pwDividerBottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#FFFFFF"/>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/pwLogDetailMsgDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Message"
+            android:textColor="#fff">
+
+        </TextView>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="100">
+
+            <LinearLayout
+                android:layout_weight="10"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="80"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/pwLogDetailMsg"
+                    android:textColor="#fff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Here comes the Log Message">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="10"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
