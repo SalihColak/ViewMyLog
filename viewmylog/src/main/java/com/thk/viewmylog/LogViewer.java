@@ -14,23 +14,29 @@ import androidx.preference.PreferenceManager;
 import com.thk.viewmylog.activties.LogViewActivity;
 import com.thk.viewmylog.activties.SettingsActivity;
 import com.thk.viewmylog.views.LogPopupView;
+import com.thk.viewmylog.views.LogToast;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class LogViewer {
 
-    private Activity parentActivity;
+    private final Activity parentActivity;
 
-    private ActivityLifecycleObserver activityLifecycleObserver;
+    private final ActivityLifecycleObserver activityLifecycleObserver;
+    private final LogPopupView logPopupView;
     private boolean lifecycleRegistered;
-    private LogPopupView logPopupView;
 
     public LogViewer(@NonNull Activity parentActivity){
         this.parentActivity = parentActivity;
         activityLifecycleObserver = new ActivityLifecycleObserver(parentActivity);
         lifecycleRegistered = false;
         logPopupView = new LogPopupView(parentActivity);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(parentActivity.getApplicationContext());
+        if(preferences.getBoolean("logToast",false)) {
+            LogToast logToast = LogToast.getInstance(parentActivity.getApplicationContext());
+            logToast.registerToast(preferences.getString("logToastTag","tag"));
+        }
     }
 
     public void startLogViewActivity(){
@@ -41,16 +47,6 @@ public class LogViewer {
     public void startSettings(){
         Intent intent = new Intent(parentActivity, SettingsActivity.class);
         parentActivity.startActivity(intent);
-
-        /*SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(parentActivity);
-        Set<String> negativeFilters = preferences.getStringSet("negativeLogFilter",new HashSet<String>());
-        int opacity = preferences.getInt("pwOpacity",100);
-        String textsize = preferences.getString("pwTextSize","2");
-        String size = preferences.getString("pwSize","2");
-        Set<String> loglevel = preferences.getStringSet("logLevel",new HashSet<String>());
-        Boolean logM = preferences.getBoolean("logCallback",false);
-        String logMTag = preferences.getString("logCallbackTag","lifecycleEvent");
-        Log.d("test",negativeFilters.toString()+ " Opacity: "+opacity+" ts: "+textsize+" Size: "+size+" Log Level: "+loglevel.toString()+" LogCall: "+logM+ " Tag: "+logMTag);*/
     }
 
     public void trackActivityLifecycle(@NonNull LifecycleOwner lifecycleOwner){
@@ -58,12 +54,11 @@ public class LogViewer {
         if(!lifecycleRegistered){
             lifecycleOwner.getLifecycle().addObserver(activityLifecycleObserver);
             Toast.makeText(context,"Lifecycle Tracking ist jetzt aktiviert",Toast.LENGTH_SHORT).show();
-            lifecycleRegistered = !lifecycleRegistered;
         }else{
             lifecycleOwner.getLifecycle().removeObserver(activityLifecycleObserver);
             Toast.makeText(context,"Lifecycle Tracking ist jetzt deaktiviert",Toast.LENGTH_SHORT).show();
-            lifecycleRegistered = !lifecycleRegistered;
         }
+        lifecycleRegistered = !lifecycleRegistered;
     }
 
     public void startPopupView() {

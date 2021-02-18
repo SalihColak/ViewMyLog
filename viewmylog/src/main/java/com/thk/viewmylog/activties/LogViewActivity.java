@@ -104,8 +104,8 @@ public class LogViewActivity extends AppCompatActivity {
                 read = !read;
             }
         }
-        else if(item.getItemId() == R.id.filter){
-
+        else if(item.getItemId() == R.id.delete){
+            activityLogAdapter.deleteAll();
         }
         else{
             return super.onOptionsItemSelected(item);
@@ -181,8 +181,7 @@ public class LogViewActivity extends AppCompatActivity {
 
     private String getLogData(){
         try{
-            int pid = android.os.Process.myPid();
-            String command = "logcat --pid="+pid+" -b main -d";
+            String command = "logcat -b main -d -v threadtime";
             Process process = Runtime.getRuntime().exec(command);
 
             String line;

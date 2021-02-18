@@ -27,4 +27,6 @@
     <string name="continueRead">Weiter</string>
     <string name="save">Speichern</string>
     <string name="delete">Löschen</string>
+    <string name="toast">Toast</string>
+    <string name="log_Toast_title">Log-Meldungen als Toast-Nachricht ausgeben</string>
 </resources>

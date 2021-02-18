@@ -9,21 +9,15 @@
         app:showAsAction="always">
         <menu>
             <item
-                android:id="@+id/logactivity"
-                android:icon="@drawable/ic_close_black_24dp"
+                android:id="@+id/logActivity"
+                android:icon="@drawable/ic_baseline_open_in_new_24"
                 android:title="LogActivity"
                 app:showAsAction="ifRoom">
             </item>
             <item
-                android:id="@+id/logpopup"
-                android:icon="@drawable/ic_close_black_24dp"
+                android:id="@+id/logPopup"
+                android:icon="@drawable/ic_baseline_popup_24"
                 android:title="PopupWindow"
-                app:showAsAction="ifRoom">
-            </item>
-            <item
-                android:id="@+id/logtoast"
-                android:icon="@drawable/ic_close_black_24dp"
-                android:title="Log as Toast"
                 app:showAsAction="ifRoom">
             </item>
             <item

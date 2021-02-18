@@ -13,6 +13,10 @@ import android.view.MenuItem;
 
 import com.thk.viewmylog.LogViewer;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class MainActivity extends AppCompatActivity {
 
     LogViewer logViewer;
@@ -31,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 try {
                     while (true){
-                        Thread.sleep(3000);
+                        Thread.sleep(7000);
                         Log.d("test","merhaba");
                     }
                 } catch (InterruptedException e) {
@@ -39,6 +43,18 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }).start();
+
+        /*try {
+            Process process = Runtime.getRuntime().exec("system/bin/logcat -d -v long");
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            while((line = bufferedReader.readLine()) != null){
+                Log.d("ls",line);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
 
 
         logViewer = new LogViewer(this);
@@ -55,15 +71,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.logactivity:
+            case R.id.logActivity:
                 logViewer.startLogViewActivity();
                 break;
-            case R.id.logpopup:
+            case R.id.logPopup:
                 logViewer.startPopupView();
-
-                break;
-            case R.id.logtoast:
-                //logViewer.registerLogAsToast();
                 break;
             case R.id.lifecycle:
                 logViewer.trackActivityLifecycle(this);

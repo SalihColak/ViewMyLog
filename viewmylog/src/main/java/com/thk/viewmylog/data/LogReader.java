@@ -5,6 +5,10 @@ import com.thk.viewmylog.interfaces.LogListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class LogReader extends Thread{
 
@@ -12,6 +16,8 @@ public class LogReader extends Thread{
     private BufferedReader bufferedReader;
     private LogListener logListener;
     private boolean read = true;
+    private boolean exit = false;
+    private boolean mostRecent = false;
 
     public void stopReading(){
         this.read = false;
@@ -24,8 +30,13 @@ public class LogReader extends Thread{
     public void run(){
         super.run();
         try{
-            int pid = android.os.Process.myPid();
-            String command = "logcat --pid="+pid+" -b main";
+            String command;
+            if(mostRecent){
+                command = "/system/bin/logcat -b main -v threadtime -T 0";
+            }
+            else {
+               command = "/system/bin/logcat -b main -v threadtime";
+            }
             process = Runtime.getRuntime().exec(command);
         }catch (IOException e){
             e.printStackTrace();
@@ -33,11 +44,15 @@ public class LogReader extends Thread{
         readLog();
     }
 
+    public void setMostRecent(boolean mostRecent){
+        this.mostRecent = mostRecent;
+    }
+
     private void readLog(){
         BufferedReader br = getBufferedReader();
         String line;
         try {
-            while ((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null && !exit) {
                 if(logListener != null && read){
                     logListener.onLogRead(line);
                 }
@@ -56,5 +71,9 @@ public class LogReader extends Thread{
 
     public void setLogListener(LogListener logListener) {
         this.logListener = logListener;
+    }
+
+    public void interrupt(){
+        this.exit = true;
     }
 }

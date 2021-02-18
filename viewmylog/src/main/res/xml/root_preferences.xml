@@ -55,6 +55,31 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        app:title="@string/toast"
+        app:iconSpaceReserved="false">
+
+        <SwitchPreference
+            app:key="logToast"
+            app:title="@string/log_Toast_title"
+            app:defaultValue="false"
+            app:icon="@drawable/ic_toast"
+            >
+
+        </SwitchPreference>
+
+        <EditTextPreference
+            app:key="logToastTag"
+            app:title="@string/log_callback_tag_title"
+            app:dependency="logToast"
+            android:defaultValue="tag"
+            app:useSimpleSummaryProvider="true"
+            app:icon="@drawable/ic_edit_black_24dp">
+
+        </EditTextPreference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         app:title="@string/filter_header"
         app:iconSpaceReserved="false">
 

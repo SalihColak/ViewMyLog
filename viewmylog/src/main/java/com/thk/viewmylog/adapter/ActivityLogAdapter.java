@@ -22,12 +22,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.ViewHolder>{
+public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.ViewHolder> {
 
     private List<Log> logList;
     private List<Log> logListCopy;
     private Activity parentActivity;
-    private boolean forceLogsExpand;
     private ArrayList<ActivityLogAdapter.ViewHolder> views;
     private LogDetailView logDetailView;
 
@@ -37,7 +36,6 @@ public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.
         this.logList = logList;
         logListCopy = new ArrayList<>();
         this.parentActivity = parentActivity;
-        this.forceLogsExpand = false;
         this.views = new ArrayList<>();
         preferences = PreferenceManager.getDefaultSharedPreferences(parentActivity.getApplicationContext());
         logDetailView = new LogDetailView(parentActivity);
@@ -45,16 +43,22 @@ public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.
 
     public void filter(String query) {
         logList.clear();
-        if(query.isEmpty()){
+        if (query.isEmpty()) {
             logList.addAll(logListCopy);
-        } else{
+        } else {
             query = query.toLowerCase();
-            for(Log log : logListCopy){
-                if(log.getTag().toLowerCase().contains(query) || log.getMessage().toLowerCase().contains(query)){
+            for (Log log : logListCopy) {
+                if (log.getTag().toLowerCase().contains(query) || log.getMessage().toLowerCase().contains(query)) {
                     logList.add(log);
                 }
             }
         }
+        notifyDataSetChanged();
+    }
+
+    public void deleteAll() {
+        logList.clear();
+        logListCopy.clear();
         notifyDataSetChanged();
     }
 
@@ -82,7 +86,7 @@ public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View popupLogView = inflater.inflate(R.layout.adapter_activity, parent,false);
+        View popupLogView = inflater.inflate(R.layout.adapter_activity, parent, false);
         return new ViewHolder(popupLogView);
     }
 
@@ -105,22 +109,17 @@ public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.
 
         int color = 0;
 
-        if(logLevel.equals("V")){
+        if (logLevel.equals("V")) {
             color = R.color.gray;
-        }
-        else if(logLevel.equals("D")){
+        } else if (logLevel.equals("D")) {
             color = R.color.blue;
-        }
-        else if(logLevel.equals("I")){
+        } else if (logLevel.equals("I")) {
             color = R.color.green;
-        }
-        else if(logLevel.equals("W")){
+        } else if (logLevel.equals("W")) {
             color = R.color.yellow;
-        }
-        else if(logLevel.equals("E")){
+        } else if (logLevel.equals("E")) {
             color = R.color.red;
-        }
-        else if(logLevel.equals("WTF")){
+        } else if (logLevel.equals("WTF")) {
             color = R.color.purple;
         }
 
@@ -138,16 +137,16 @@ public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.
         });
     }
 
-    public void addItem(Log log){
+    public void addItem(Log log) {
         filterNegative(log);
     }
 
     private void filterNegative(Log log) {
-        Set<String> negativeFilters = preferences.getStringSet("negativeLogFilter",new HashSet<String>());
-        if(!negativeFilters.contains(log.getTag().toLowerCase())){
+        Set<String> negativeFilters = preferences.getStringSet("negativeLogFilter", new HashSet<String>());
+        if (!negativeFilters.contains(log.getTag().toLowerCase())) {
             logList.add(log);
             logListCopy.add(log);
-            notifyItemInserted(logList.size()-1);
+            notifyItemInserted(logList.size() - 1);
         }
     }
 

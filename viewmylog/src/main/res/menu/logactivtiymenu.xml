@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activties.LogViewActivity">
 
     <item
         android:id="@+id/filter"
@@ -10,33 +12,20 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/action_more_a"
-        android:icon="@drawable/ic_more_vert_white_24dp"
-        android:title=""
-        app:showAsAction="always">
-
-        <menu>
-            <item
-                android:id="@+id/stopContinue"
-                android:icon="@drawable/ic_baseline_pause_24"
-                android:title="@string/stopRead"
-                app:showAsAction="ifRoom" />
-            <item
-                android:id="@+id/save"
-                android:icon="@drawable/ic_outline_file_download_black_24"
-                android:title="@string/save"
-                app:showAsAction="ifRoom" />
-            <item
-                android:id="@+id/delete"
-                android:icon="@drawable/ic_baseline_delete_24"
-                android:title="@string/delete"
-                app:showAsAction="ifRoom" />
-        </menu>
-
-    </item>
-
-
-
+        android:id="@+id/stopContinue"
+        android:icon="@drawable/ic_baseline_pause_white_24"
+        android:title="@string/stopRead"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/save"
+        android:icon="@drawable/ic_outline_file_download_24"
+        android:title="@string/save"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/delete"
+        android:icon="@drawable/ic_baseline_delete_white_24"
+        android:title="@string/delete"
+        app:showAsAction="always" />
 
 
 </menu>
