@@ -52,11 +52,11 @@ public class LogViewer {
     public void trackActivityLifecycle(@NonNull LifecycleOwner lifecycleOwner){
         final Context context = parentActivity.getApplicationContext();
         if(!lifecycleRegistered){
-            lifecycleOwner.getLifecycle().addObserver(activityLifecycleObserver);
             Toast.makeText(context,"Lifecycle Tracking ist jetzt aktiviert",Toast.LENGTH_SHORT).show();
+            lifecycleOwner.getLifecycle().addObserver(activityLifecycleObserver);
         }else{
-            lifecycleOwner.getLifecycle().removeObserver(activityLifecycleObserver);
             Toast.makeText(context,"Lifecycle Tracking ist jetzt deaktiviert",Toast.LENGTH_SHORT).show();
+            lifecycleOwner.getLifecycle().removeObserver(activityLifecycleObserver);
         }
         lifecycleRegistered = !lifecycleRegistered;
     }

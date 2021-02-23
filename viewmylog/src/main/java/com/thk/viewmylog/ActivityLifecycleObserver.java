@@ -3,6 +3,7 @@ package com.thk.viewmylog;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
@@ -20,6 +21,7 @@ class ActivityLifecycleObserver implements LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     public void onCreateListener() {
+        Toast.makeText(activity.getApplicationContext(),activity.getClass().getSimpleName()+": onCreate() called.",Toast.LENGTH_SHORT).show();
         if(preferences.getBoolean("logCallback",false)) {
             Log.d(preferences.getString("logCallbackTag","lifecycleEvent"),activity.getClass().getSimpleName()+": onCreate() called.");
         }
@@ -27,6 +29,7 @@ class ActivityLifecycleObserver implements LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     public void onStartListener() {
+        Toast.makeText(activity.getApplicationContext(),activity.getClass().getSimpleName()+": onStart() called.",Toast.LENGTH_SHORT).show();
         if(preferences.getBoolean("logCallback",false)){
             Log.d(preferences.getString("logCallbackTag","lifecycleEvent"),activity.getClass().getSimpleName()+": onStart() called.");
         }
@@ -34,6 +37,7 @@ class ActivityLifecycleObserver implements LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     public void onResumeListener() {
+        Toast.makeText(activity.getApplicationContext(),activity.getClass().getSimpleName()+": onResume() called.",Toast.LENGTH_SHORT).show();
         if(preferences.getBoolean("logCallback",false)){
             Log.d(preferences.getString("logCallbackTag","lifecycleEvent"),activity.getClass().getSimpleName()+": onResume() called.");
         }
@@ -41,6 +45,7 @@ class ActivityLifecycleObserver implements LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     public void onPauseListener() {
+        Toast.makeText(activity.getApplicationContext(),activity.getClass().getSimpleName()+": onPause() called.",Toast.LENGTH_SHORT).show();
         if(preferences.getBoolean("logCallback",false)){
             Log.d(preferences.getString("logCallbackTag","lifecycleEvent"),activity.getClass().getSimpleName()+": onPause() called.");
         }
@@ -48,6 +53,7 @@ class ActivityLifecycleObserver implements LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     public void onStopListener() {
+        Toast.makeText(activity.getApplicationContext(),activity.getClass().getSimpleName()+": onStop() called.",Toast.LENGTH_SHORT).show();
         if(preferences.getBoolean("logCallback",false)){
             Log.d(preferences.getString("logCallbackTag","lifecycleEvent"),activity.getClass().getSimpleName()+": onStop() called.");
         }
@@ -55,6 +61,7 @@ class ActivityLifecycleObserver implements LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     public void onDestroyListener() {
+        Toast.makeText(activity.getApplicationContext(),activity.getClass().getSimpleName()+": onDestroy() called.",Toast.LENGTH_SHORT).show();
         if(preferences.getBoolean("logCallback",false)){
             Log.d(preferences.getString("logCallbackTag","lifecycleEvent"),activity.getClass().getSimpleName()+": onDestroy() called.");
         }

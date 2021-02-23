@@ -26,29 +26,29 @@ import java.util.Set;
 public class PopupLogAdapter extends RecyclerView.Adapter<PopupLogAdapter.ViewHolder> {
 
 
-    private List<Log> logList;
-    private Context context;
+    private final List<Log> logList;
     private boolean forceLogsExpand;
-    private ArrayList<ViewHolder> views;
+    private final ArrayList<ViewHolder> views;
 
-    private SharedPreferences preferences;
+    private final SharedPreferences preferences;
 
     public PopupLogAdapter(List<Log> logList, Context context) {
         this.logList = logList;
-        this.context = context;
         forceLogsExpand = false;
         views = new ArrayList<>();
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     public void addItem(Log log) {
-        filter(log);
+        negativeFilter(log);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView tag, message,level;
-        private LinearLayout logBackground;
+        private final TextView tag;
+        private final TextView message;
+        private final TextView level;
+        private final LinearLayout logBackground;
 
         private ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,12 +84,28 @@ public class PopupLogAdapter extends RecyclerView.Adapter<PopupLogAdapter.ViewHo
         String logLevel = logList.get(holder.getAdapterPosition()).getLevel();
         level.setText(logLevel);
 
-        if(logLevel.equals("V")) level.setBackgroundColor(level.getResources().getColor(R.color.gray));
-        else if(logLevel.equals("D")) level.setBackgroundColor(level.getResources().getColor(R.color.blue));
-        else if(logLevel.equals("I")) level.setBackgroundColor(level.getResources().getColor(R.color.green));
-        else if(logLevel.equals("W")) level.setBackgroundColor(level.getResources().getColor(R.color.yellow));
-        else if(logLevel.equals("E")) level.setBackgroundColor(level.getResources().getColor(R.color.red));
-        else if(logLevel.equals("WTF")) level.setBackgroundColor(level.getResources().getColor(R.color.purple));
+        int logLevelColor = R.color.gray;
+        switch (logLevel.toLowerCase()) {
+            case "v":
+                logLevelColor = R.color.gray;
+                break;
+            case "d":
+                logLevelColor = R.color.blue;
+                break;
+            case "i":
+                logLevelColor = R.color.green;
+                break;
+            case "w":
+                logLevelColor = R.color.yellow;
+                break;
+            case "e":
+                logLevelColor = R.color.red;
+                break;
+            case "wtf":
+                logLevelColor = R.color.purple;
+                break;
+        }
+        level.setBackgroundColor(level.getResources().getColor(logLevelColor));
 
         int textSizeValue = Integer.parseInt(preferences.getString("pwTextSize","2"));
         int textSize;
@@ -131,9 +147,10 @@ public class PopupLogAdapter extends RecyclerView.Adapter<PopupLogAdapter.ViewHo
 
     }
 
-    public void filter(Log log) {
+    public void negativeFilter(Log log) {
         Set<String> negativeFilters = preferences.getStringSet("negativeLogFilter",new HashSet<String>());
-        if(!negativeFilters.contains(log.getTag().toLowerCase())){
+        Set<String> loglevel = preferences.getStringSet("logLevel",new HashSet<String>());
+        if(!negativeFilters.contains(log.getTag().toLowerCase()) && loglevel.contains(log.getLevel().toLowerCase())){
             logList.add(log);
             notifyItemInserted(logList.size()-1);
         }

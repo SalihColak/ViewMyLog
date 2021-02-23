@@ -9,7 +9,7 @@
 
     <!-- PopupWindow Preferences -->
     <string name="opacity_title">Deckkraft</string>
-    <string name="size_title">Größe</string>
+    <string name="size_title">Größe des Fensters</string>
     <string name="textsize_title">Textgröße</string>
     <string name="default_textsize">12</string>
 

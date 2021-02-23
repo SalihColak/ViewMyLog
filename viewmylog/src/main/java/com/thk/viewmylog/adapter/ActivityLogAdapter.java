@@ -29,8 +29,10 @@ public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.
     private Activity parentActivity;
     private ArrayList<ActivityLogAdapter.ViewHolder> views;
     private LogDetailView logDetailView;
-
     private SharedPreferences preferences;
+
+    private boolean CURRENTLY_SEARCHING = false;
+    private String searchQuery;
 
     public ActivityLogAdapter(List<Log> logList, Activity parentActivity) {
         this.logList = logList;
@@ -44,8 +46,11 @@ public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.
     public void filter(String query) {
         logList.clear();
         if (query.isEmpty()) {
+            CURRENTLY_SEARCHING = false;
             logList.addAll(logListCopy);
         } else {
+            searchQuery = query;
+            CURRENTLY_SEARCHING = true;
             query = query.toLowerCase();
             for (Log log : logListCopy) {
                 if (log.getTag().toLowerCase().contains(query) || log.getMessage().toLowerCase().contains(query)) {
@@ -139,11 +144,15 @@ public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.
 
     public void addItem(Log log) {
         filterNegative(log);
+        if(CURRENTLY_SEARCHING){
+            filter(searchQuery);
+        }
     }
 
     private void filterNegative(Log log) {
         Set<String> negativeFilters = preferences.getStringSet("negativeLogFilter", new HashSet<String>());
-        if (!negativeFilters.contains(log.getTag().toLowerCase())) {
+        Set<String> loglevel = preferences.getStringSet("logLevel",new HashSet<String>());
+        if (!negativeFilters.contains(log.getTag().toLowerCase()) && loglevel.contains(log.getLevel().toLowerCase())) {
             logList.add(log);
             logListCopy.add(log);
             notifyItemInserted(logList.size() - 1);
