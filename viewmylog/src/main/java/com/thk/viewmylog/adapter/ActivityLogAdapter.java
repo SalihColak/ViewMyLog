@@ -24,12 +24,10 @@ import java.util.Set;
 
 public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.ViewHolder> {
 
-    private List<Log> logList;
-    private List<Log> logListCopy;
-    private Activity parentActivity;
-    private ArrayList<ActivityLogAdapter.ViewHolder> views;
-    private LogDetailView logDetailView;
-    private SharedPreferences preferences;
+    private final List<Log> logList;
+    private final List<Log> logListCopy;
+    private final LogDetailView logDetailView;
+    private final SharedPreferences preferences;
 
     private boolean CURRENTLY_SEARCHING = false;
     private String searchQuery;
@@ -37,8 +35,6 @@ public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.
     public ActivityLogAdapter(List<Log> logList, Activity parentActivity) {
         this.logList = logList;
         logListCopy = new ArrayList<>();
-        this.parentActivity = parentActivity;
-        this.views = new ArrayList<>();
         preferences = PreferenceManager.getDefaultSharedPreferences(parentActivity.getApplicationContext());
         logDetailView = new LogDetailView(parentActivity);
     }
@@ -67,7 +63,7 @@ public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.
         notifyDataSetChanged();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView tag;
         private final TextView message;
@@ -103,8 +99,6 @@ public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.
         final TextView pid = holder.pid;
         final TextView tid = holder.tid;
 
-        views.add(holder);
-
         tag.setText(logList.get(holder.getAdapterPosition()).getTag());
         message.setText(logList.get(holder.getAdapterPosition()).getMessage());
         pid.setText(String.valueOf(logList.get(holder.getAdapterPosition()).getPid()));
@@ -112,20 +106,27 @@ public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.
 
         String logLevel = logList.get(holder.getAdapterPosition()).getLevel();
 
-        int color = 0;
+        int color = R.color.gray;
 
-        if (logLevel.equals("V")) {
-            color = R.color.gray;
-        } else if (logLevel.equals("D")) {
-            color = R.color.blue;
-        } else if (logLevel.equals("I")) {
-            color = R.color.green;
-        } else if (logLevel.equals("W")) {
-            color = R.color.yellow;
-        } else if (logLevel.equals("E")) {
-            color = R.color.red;
-        } else if (logLevel.equals("WTF")) {
-            color = R.color.purple;
+        switch (logLevel.toLowerCase()) {
+            case "v":
+                color = R.color.gray;
+                break;
+            case "d":
+                color = R.color.blue;
+                break;
+            case "i":
+                color = R.color.green;
+                break;
+            case "w":
+                color = R.color.yellow;
+                break;
+            case "e":
+                color = R.color.red;
+                break;
+            case "wtf":
+                color = R.color.purple;
+                break;
         }
 
         pid.setTextColor(pid.getResources().getColor(color));

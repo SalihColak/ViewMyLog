@@ -94,6 +94,7 @@
             app:title="@string/loglevel_title"
             app:key="logLevel"
             android:entries="@array/loglevel_entries"
+            android:defaultValue="@array/loglevel_values"
             android:entryValues="@array/loglevel_values"
             app:icon="@drawable/ic_filter_list_black_24dp">
 

@@ -3,7 +3,6 @@ package com.thk.viewmylog.adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +42,7 @@ public class PopupLogAdapter extends RecyclerView.Adapter<PopupLogAdapter.ViewHo
         negativeFilter(log);
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView tag;
         private final TextView message;

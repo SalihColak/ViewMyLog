@@ -23,7 +23,6 @@ import java.util.List;
 
 public class FilterPreferenceDialogFragmentCompat extends PreferenceDialogFragmentCompat {
 
-    private RecyclerView mRecyclerView;
     private LinearLayout linearLayout;
     private List<String> filterTagList;
     private FilterAdapter filterAdapter;
@@ -59,7 +58,7 @@ public class FilterPreferenceDialogFragmentCompat extends PreferenceDialogFragme
     @Override
     protected void onBindDialogView(final View view) {
         super.onBindDialogView(view);
-        mRecyclerView = view.findViewById(R.id.rvNegativeFilter);
+        RecyclerView mRecyclerView = view.findViewById(R.id.rvNegativeFilter);
 
 
         linearLayout = view.findViewById(R.id.addFilter);

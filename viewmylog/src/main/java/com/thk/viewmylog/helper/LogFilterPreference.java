@@ -17,7 +17,7 @@ public class LogFilterPreference extends DialogPreference {
 
     private List<String> filterTags;
     private Set<String> filterTagsSet;
-    private int mDialogLayoutResId = R.layout.preference_dialog_filter;
+    private final int mDialogLayoutResId = R.layout.preference_dialog_filter;
 
     public LogFilterPreference(Context context) {
         this(context, null);

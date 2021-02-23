@@ -1,5 +1,6 @@
 package com.thk.viewmylog.views;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.util.DisplayMetrics;
@@ -33,20 +34,20 @@ import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 public class LogPopupView  {
 
-    private Activity parentActivity;
+    private final Activity parentActivity;
     private boolean isCreated;
     private PopupWindow popupWindow;
     private View popupView;
     private boolean endReached = true;
 
-    private LogReader logReader;
-    private MainThread mainThread;
+    private final LogReader logReader;
+    private final MainThread mainThread;
 
     private RecyclerView recyclerView;
     private PopupLogAdapter popupLogAdapter;
     private Button btnScroll;
 
-    private List<Log> logList;
+    private final List<Log> logList;
 
     public LogPopupView(Activity parentActivity) {
         this.parentActivity = parentActivity;
@@ -56,6 +57,7 @@ public class LogPopupView  {
         logReader = new LogReader();
     }
 
+    @SuppressLint("InflateParams")
     public void showPopupView(){
         if(!isCreated){
             LayoutInflater inflater = (LayoutInflater) parentActivity.getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -100,6 +102,7 @@ public class LogPopupView  {
             btnScroll.setVisibility(View.INVISIBLE);
 
             isCreated = true;
+            recyclerView.scrollToPosition(popupLogAdapter.getItemCount()-1);
             setPopupViewAnimation();
             setLogReader();
         }
@@ -168,6 +171,7 @@ public class LogPopupView  {
             private int mCurrentX = (int) popupView.getX();
             private int mCurrentY = (int) popupView.getY();
 
+            @SuppressLint("ClickableViewAccessibility")
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {

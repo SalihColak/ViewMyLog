@@ -18,18 +18,18 @@ import java.util.List;
 
 public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.ViewHolder> {
 
-    private List<String> mTags;
+    private final List<String> mTags;
     private FilterDeleteListener filterDeleteListener;
 
     public FilterAdapter(List<String> mTags) {
         this.mTags = mTags;
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
-        private TextView tagName;
-        private ImageButton delete;
+        private final TextView tagName;
+        private final ImageButton delete;
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
@@ -67,7 +67,6 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.ViewHolder
                 mTags.remove(holder.getAdapterPosition());
                 notifyItemRemoved(holder.getAdapterPosition());
                 filterDeleteListener.onFilterDeleted(mTags);
-                Log.d("delete","deleted "+position+" übrig sind "+mTags.size());
             }
         });
     }

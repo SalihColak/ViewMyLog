@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,9 +14,6 @@ import com.thk.viewmylog.activties.LogViewActivity;
 import com.thk.viewmylog.activties.SettingsActivity;
 import com.thk.viewmylog.views.LogPopupView;
 import com.thk.viewmylog.views.LogToast;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class LogViewer {
 

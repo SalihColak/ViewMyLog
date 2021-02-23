@@ -1,5 +1,6 @@
 package com.thk.viewmylog.views;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -28,6 +29,7 @@ public class LogDetailView {
         this.parentActivity = parentActivity;
     }
 
+    @SuppressLint("InflateParams")
     public void showLogDetail(Log log){
         this.log = log;
         if(log == null) return;

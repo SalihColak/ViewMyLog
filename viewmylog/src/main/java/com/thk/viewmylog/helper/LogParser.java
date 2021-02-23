@@ -12,23 +12,23 @@ public class LogParser {
 
         if(splittedMsg.length>=3){
             Log log = new Log();
-            String message = "";
+            StringBuilder message = new StringBuilder();
             for (int i = 3; i< splittedMsg.length; i++){
                 if(i == splittedMsg.length-1){
-                    message += splittedMsg[i];
+                    message.append(splittedMsg[i]);
                 }else{
-                    message += splittedMsg[i] +":";
+                    message.append(splittedMsg[i]).append(":");
                 }
 
             }
-            if(message.isEmpty() || message.equals(" ")) return null;
-            log.setMessage(message);
+            if((message.length() == 0) || message.toString().equals(" ")) return null;
+            log.setMessage(message.toString());
             String metaDataRaw = splittedMsg[0]+":"+splittedMsg[1]+ ":"+splittedMsg[2];
             String[] metaData = metaDataRaw.split(" ");
             List<String> metaDataList = new ArrayList<>();
-            for (int k=0; k<metaData.length; k++){
-                if(!metaData[k].equals("")){
-                    metaDataList.add(metaData[k]);
+            for (String metaDatum : metaData) {
+                if (!metaDatum.equals("")) {
+                    metaDataList.add(metaDatum);
                 }
             }
             metaData = metaDataList.toArray(new String[0]);

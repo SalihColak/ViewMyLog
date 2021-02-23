@@ -32,7 +32,7 @@
             android:id="@+id/deleteTag"
             android:layout_width="24dp"
             android:layout_height="31dp"
-            android:src="@drawable/ic_baseline_delete_white_24"
+            android:src="@drawable/ic_baseline_delete_24"
             android:background="?attr/selectableItemBackgroundBorderless"
             >
         </ImageButton>

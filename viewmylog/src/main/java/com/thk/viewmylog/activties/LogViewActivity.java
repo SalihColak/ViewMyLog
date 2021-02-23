@@ -45,7 +45,6 @@ import java.util.List;
 
 public class LogViewActivity extends AppCompatActivity {
 
-    private List<Log> logList;
     private LogReader logReader;
     private MainThread mainThread;
 
@@ -225,10 +224,9 @@ public class LogViewActivity extends AppCompatActivity {
     private void init() {
 
         btnScroll = findViewById(R.id.btnScrollActivity);
-
-        logList = new ArrayList<>();
-
         recyclerView = findViewById(R.id.rvActivity);
+        List<Log> logList = new ArrayList<>();
+
         activityLogAdapter = new ActivityLogAdapter(logList,this);
         recyclerView.setAdapter(activityLogAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

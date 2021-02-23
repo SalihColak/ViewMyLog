@@ -11,8 +11,8 @@ import androidx.lifecycle.OnLifecycleEvent;
 import androidx.preference.PreferenceManager;
 
 class ActivityLifecycleObserver implements LifecycleObserver {
-    private Activity activity;
-    private SharedPreferences preferences;
+    private final Activity activity;
+    private final SharedPreferences preferences;
 
     ActivityLifecycleObserver(Activity activity){
         this.activity = activity;

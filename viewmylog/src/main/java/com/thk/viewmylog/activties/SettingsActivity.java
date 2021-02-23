@@ -9,16 +9,20 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.preference.EditTextPreference;
+import androidx.preference.MultiSelectListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
-import androidx.preference.SeekBarPreference;
 import androidx.preference.SwitchPreference;
 
 import com.thk.viewmylog.R;
 import com.thk.viewmylog.helper.FilterPreferenceDialogFragmentCompat;
 import com.thk.viewmylog.helper.LogFilterPreference;
 import com.thk.viewmylog.views.LogToast;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SettingsActivity extends AppCompatActivity {
 

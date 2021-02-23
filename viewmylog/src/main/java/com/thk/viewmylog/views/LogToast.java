@@ -1,10 +1,8 @@
 package com.thk.viewmylog.views;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.widget.Toast;
-
-import androidx.preference.PreferenceManager;
 
 import com.thk.viewmylog.data.LogReader;
 import com.thk.viewmylog.entities.Log;
@@ -23,6 +21,7 @@ public class LogToast {
     private MainThread mainThread;
     private final List<Toast> toastList;
 
+    @SuppressLint("StaticFieldLeak")
     private static LogToast logToast;
 
     private LogToast(Context context) {
