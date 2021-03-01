@@ -10,7 +10,8 @@
     android:paddingRight="5dp"
     android:weightSum="100"
     android:clickable="true"
-    android:focusable="true">
+    android:focusable="true"
+    android:baselineAligned="false">
 
     <LinearLayout
         android:orientation="horizontal"

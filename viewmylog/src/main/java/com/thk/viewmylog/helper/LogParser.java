@@ -5,8 +5,16 @@ import com.thk.viewmylog.entities.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Diese Klasse dient dazu Log-Meldungen zu parsen.
+ */
 public class LogParser {
 
+    /**
+     * Wandelt eine übergebene als String Log-Meldung in eine com.thk.viewmylog.entities.Log-Instanz um.
+     * @param msg Log-Meldung im threadtime-Format
+     * @return log-Instanz
+     */
     public static Log getLogFromMessage(String msg){
         String[] splittedMsg = msg.split(":");
 

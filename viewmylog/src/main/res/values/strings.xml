@@ -21,12 +21,22 @@
     <string name="log_callback_title">Callbackmethoden-Aufrufe zuzätzlich loggen</string>
     <string name="log_callback_tag_title">Tag des Logs</string>
 
+    <!-- Toast Preferences -->
+    <string name="toast">Toast</string>
+    <string name="log_Toast_title">Log-Meldungen als Toast-Nachricht ausgeben</string>
+
     <!-- Sonstige Strings -->
     <string name="filter">Filter</string>
     <string name="stopRead">Pause</string>
     <string name="continueRead">Weiter</string>
     <string name="save">Speichern</string>
     <string name="delete">Löschen</string>
-    <string name="toast">Toast</string>
-    <string name="log_Toast_title">Log-Meldungen als Toast-Nachricht ausgeben</string>
+    <string name="einstellungen">Einstellungen</string>
+    <string name="lifecycle_track">Lifecycle Track</string>
+    <string name="popupwindow">PopupWindow</string>
+    <string name="logactivity">LogActivity</string>
+    <string name="filter_hinzufuegen">Filter hinzufügen...</string>
+    <string name="app_logs">App Logs</string>
+    <string name="autoscroll">Autoscroll</string>
+
 </resources>

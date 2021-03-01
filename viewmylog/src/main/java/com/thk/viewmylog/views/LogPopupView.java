@@ -32,6 +32,9 @@ import java.util.List;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
+/**
+ * Diese Klasse dient dazu ein PopupWindow oberhalb der aktuellen Activity zu erzeugen und eingehende Log-Meldungen darin anzuzeigen.
+ */
 public class LogPopupView  {
 
     private final Activity parentActivity;
@@ -49,6 +52,10 @@ public class LogPopupView  {
 
     private final List<Log> logList;
 
+    /**
+     * Konstruktor mit Initialisierung
+     * @param parentActivity parentActivity
+     */
     public LogPopupView(Activity parentActivity) {
         this.parentActivity = parentActivity;
         isCreated = false;
@@ -57,6 +64,9 @@ public class LogPopupView  {
         logReader = new LogReader();
     }
 
+    /**
+     * Falls noch kein PopupWindow vorhanden ist, wird ein PopupWindow generiert und Log-Meldungen werden darin angezeigt-
+     */
     @SuppressLint("InflateParams")
     public void showPopupView(){
         if(!isCreated){
@@ -108,6 +118,9 @@ public class LogPopupView  {
         }
     }
 
+    /**
+     * Initialisert die RecyclerView, in der die Log-Meldungen angezeigt werden.
+     */
     private void setRecyclerView(){
         recyclerView = popupView.findViewById(R.id.rvPopup);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -130,7 +143,9 @@ public class LogPopupView  {
         recyclerView.setLayoutManager(new LinearLayoutManager(parentActivity.getApplicationContext()));
     }
 
-
+    /**
+     * Erstellt ein PopupWindow und definiert das Aussehen des PopupWindows je nach Nutzerpräferenzen.
+     */
     private void createPopupWindow(){
         DisplayMetrics displayMetrics = new DisplayMetrics();
         parentActivity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -164,6 +179,9 @@ public class LogPopupView  {
         popupWindow = new PopupWindow(popupView, width, height, false);
     }
 
+    /**
+     * Setzt die Drag & Drop Animation des PopupWindows um.
+     */
     private void setPopupViewAnimation() {
         popupView.setOnTouchListener(new View.OnTouchListener() {
             private float mDx;
@@ -191,6 +209,10 @@ public class LogPopupView  {
         });
     }
 
+    /**
+     * Diese Methode startet einen neuen Thread der Klasse LogReader, welche die Logs einliest und
+     * bei jedem gelesenem Log die jeweilige Log-Nachricht parst und in die RecyclerView recyclerView einfügt.
+     */
     private void setLogReader() {
         logReader.setLogListener(new LogListener() {
             @Override

@@ -22,26 +22,33 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Diese Klasse ist ein Adapter für die Elemente des RecyclerView in dem Popup-Fenster.
+ */
 public class PopupLogAdapter extends RecyclerView.Adapter<PopupLogAdapter.ViewHolder> {
 
-
     private final List<Log> logList;
-    private boolean forceLogsExpand;
     private final ArrayList<ViewHolder> views;
-
     private final SharedPreferences preferences;
 
+    private boolean FORCE_LOGS_EXPAND;
+
+    /**
+     * Konstruktor mit notwendiger Initialisierung
+     *
+     * @param logList Liste mit Elementen der Klasse com.thk.viewmylog.entities.Log
+     * @param context Referenz den Context der ParentActivity
+     */
     public PopupLogAdapter(List<Log> logList, Context context) {
         this.logList = logList;
-        forceLogsExpand = false;
+        FORCE_LOGS_EXPAND = false;
         views = new ArrayList<>();
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    public void addItem(Log log) {
-        negativeFilter(log);
-    }
-
+    /**
+     * Diese Klasse definiert die Views, die in einer Log-Nachricht enthalten sind.
+     */
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView tag;
@@ -49,6 +56,11 @@ public class PopupLogAdapter extends RecyclerView.Adapter<PopupLogAdapter.ViewHo
         private final TextView level;
         private final LinearLayout logBackground;
 
+        /**
+         * Kontruktor zur Initialisierung der Views.
+         *
+         * @param itemView ItemView
+         */
         private ViewHolder(@NonNull View itemView) {
             super(itemView);
             level = itemView.findViewById(R.id.pwLogLevel);
@@ -58,16 +70,38 @@ public class PopupLogAdapter extends RecyclerView.Adapter<PopupLogAdapter.ViewHo
         }
     }
 
+    /**
+     * Fügt log nach einer Tag-Filterung in die logList ein.
+     *
+     * @param log Einzufügende Log-Instanz
+     */
+    public void addItem(Log log) {
+        negativeFilter(log);
+    }
+
+    /**
+     * Diese Methode überschreibt die onCreateViewHolder() der Superklasse und legt das Layout für das Adapter fest.
+     *
+     * @param parent   parent
+     * @param viewType viewType
+     * @return neue ViewHolder-Instanz
+     */
     @NonNull
     @Override
     public PopupLogAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View popupLogView = inflater.inflate(R.layout.adapter_popup, parent,false);
+        View popupLogView = inflater.inflate(R.layout.adapter_popup, parent, false);
         return new ViewHolder(popupLogView);
     }
 
+    /**
+     * Diese Methode überschreibt die onBindViewHolder() der Superklasse, befüllt die Views mit Werten und definiert das Verhalten der Views.
+     *
+     * @param holder   holder
+     * @param position position
+     */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final LinearLayout logBackground = holder.logBackground;
@@ -106,37 +140,41 @@ public class PopupLogAdapter extends RecyclerView.Adapter<PopupLogAdapter.ViewHo
         }
         level.setBackgroundColor(level.getResources().getColor(logLevelColor));
 
-        int textSizeValue = Integer.parseInt(preferences.getString("pwTextSize","2"));
+        int textSizeValue = Integer.parseInt(preferences.getString("pwTextSize", "2"));
         int textSize;
-        switch (textSizeValue){
-            case 0: textSize = 8;
+        switch (textSizeValue) {
+            case 0:
+                textSize = 8;
                 break;
-            case 1: textSize = 10;
+            case 1:
+                textSize = 10;
                 break;
-            case 3: textSize = 14;
+            case 3:
+                textSize = 14;
                 break;
-            case 4: textSize = 16;
+            case 4:
+                textSize = 16;
                 break;
-            default:textSize = 12;
+            default:
+                textSize = 12;
         }
-        tag.setTextSize(TypedValue.COMPLEX_UNIT_SP,textSize);
-        message.setTextSize(TypedValue.COMPLEX_UNIT_SP,textSize);
-        level.setTextSize(TypedValue.COMPLEX_UNIT_SP,textSize);
+        tag.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
+        message.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
+        level.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
 
-        if (holder.getAdapterPosition()%2 == 1) {
+        if (holder.getAdapterPosition() % 2 == 1) {
             logBackground.setBackground(logBackground.getResources().getDrawable(R.drawable.custom_ripple_a));
-        }
-        else {
+        } else {
             logBackground.setBackground(logBackground.getResources().getDrawable(R.drawable.custom_ripple_b));
         }
 
         logBackground.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tag.getMaxLines()==Integer.MAX_VALUE){
+                if (tag.getMaxLines() == Integer.MAX_VALUE) {
                     tag.setMaxLines(1);
                     message.setMaxLines(1);
-                }else{
+                } else {
                     tag.setMaxLines(Integer.MAX_VALUE);
                     message.setMaxLines(Integer.MAX_VALUE);
                 }
@@ -146,38 +184,53 @@ public class PopupLogAdapter extends RecyclerView.Adapter<PopupLogAdapter.ViewHo
 
     }
 
+    /**
+     * Filtert eingehende Log-Meldungen nach Tag und Log-Level und fügt diese der logList ein.
+     *
+     * @param log log
+     */
     public void negativeFilter(Log log) {
-        Set<String> negativeFilters = preferences.getStringSet("negativeLogFilter",new HashSet<String>());
-        Set<String> loglevel = preferences.getStringSet("logLevel",new HashSet<String>());
-        if(!negativeFilters.contains(log.getTag().toLowerCase()) && loglevel.contains(log.getLevel().toLowerCase())){
+        Set<String> negativeFilters = preferences.getStringSet("negativeLogFilter", new HashSet<String>());
+        Set<String> loglevel = preferences.getStringSet("logLevel", new HashSet<String>());
+        if (!negativeFilters.contains(log.getTag().toLowerCase()) && loglevel.contains(log.getLevel().toLowerCase())) {
             logList.add(log);
-            notifyItemInserted(logList.size()-1);
+            notifyItemInserted(logList.size() - 1);
         }
     }
 
+    /**
+     * Diese Methode überschreibt die getItemCount() der Superklasse und gibt die Anzahl der Elemente in der logList zurück.
+     *
+     * @return Anzahl der Elemente in der logList.
+     */
     @Override
     public int getItemCount() {
         return logList.size();
     }
 
-    public boolean expandLogs(){
-        if(!forceLogsExpand){
-            for(ViewHolder holder : views){
+    /**
+     * Erweitert/Vermindert die Log-Ansicht.
+     *
+     * @return true, falls erweitert; false, falls vermindert
+     */
+    public boolean expandLogs() {
+        if (!FORCE_LOGS_EXPAND) {
+            for (ViewHolder holder : views) {
                 final TextView tag = holder.tag;
                 final TextView message = holder.message;
                 tag.setMaxLines(Integer.MAX_VALUE);
                 message.setMaxLines(Integer.MAX_VALUE);
-                forceLogsExpand = true;
             }
+            FORCE_LOGS_EXPAND = true;
             return true;
-        }else {
-            for(ViewHolder holder : views){
+        } else {
+            for (ViewHolder holder : views) {
                 final TextView tag = holder.tag;
                 final TextView message = holder.message;
                 tag.setMaxLines(1);
                 message.setMaxLines(1);
-                forceLogsExpand = false;
             }
+            FORCE_LOGS_EXPAND = false;
             return false;
         }
     }

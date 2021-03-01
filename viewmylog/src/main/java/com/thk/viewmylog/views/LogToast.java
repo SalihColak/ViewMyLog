@@ -13,6 +13,9 @@ import com.thk.viewmylog.interfaces.LogListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Diese Klasse dient dazu eingehende Log-Meldungen, nach einem bestimmten Tag gefiltert, als Toast-Meldung auszugeben.
+ */
 public class LogToast {
 
     private final Context context;
@@ -24,12 +27,21 @@ public class LogToast {
     @SuppressLint("StaticFieldLeak")
     private static LogToast logToast;
 
+    /**
+     * Konstruktor mit Initialisierung
+     * @param context context
+     */
     private LogToast(Context context) {
         this.context = context;
         toastList = new ArrayList<>();
         tag = "tag";
     }
 
+    /**
+     * Diese Methode gibt die einzige LogToast-Instanz zurück und generiert sie bei Bedarf.
+     * @param context context
+     * @return LogToast-Instanz
+     */
     public static LogToast getInstance(Context context) {
         if (logToast == null) {
             logToast = new LogToast(context);
@@ -37,6 +49,10 @@ public class LogToast {
         return logToast;
     }
 
+    /**
+     * Diese Methode gibt Log-Meldungen, die den übergebenen String als Tag haben, als Toast-Meldung aus.
+     * @param newTag Tag der Log-Meldungen, die als Toast-Meldung ausgegeben werden sollen.
+     */
     public void registerToast(String newTag) {
         this.tag = newTag;
         logReader = new LogReader();
@@ -64,6 +80,9 @@ public class LogToast {
         }
     }
 
+    /**
+     * Entfernt alle noch anzuzeigende Toast-Nachrichten aus der Schlange und beendet das Einlesen weiterer Log-Meldungen.
+     */
     public void unregisterToast() {
         if(logReader != null){
             logReader.interrupt();

@@ -19,16 +19,27 @@ import java.util.Calendar;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
+/**
+ * Diese Klasse definiert ein Popup-Fenster für die detaillierte Anzeige einer Log-Meldung
+ */
 public class LogDetailView {
     private final Activity parentActivity;
     private PopupWindow popupWindow;
     private View popupView;
     private Log log;
 
+    /**
+     * Konstruktor mit Initialiserung
+     * @param parentActivity parentActivity
+     */
     public LogDetailView(Activity parentActivity) {
         this.parentActivity = parentActivity;
     }
 
+    /**
+     * Erstellt ein neues PopupWindow und zeigt die Log-Meldung an.
+     * @param log Log-Meldung die angezeigt werden soll.
+     */
     @SuppressLint("InflateParams")
     public void showLogDetail(Log log){
         this.log = log;
@@ -47,6 +58,9 @@ public class LogDetailView {
         assignValues();
     }
 
+    /**
+     * Weist zugehörigen Views Attibute der Log-Instanz zu und stylet die View-Elemente.
+     */
     private void assignValues() {
         TextView message, messageDesc;
         TextView tag;

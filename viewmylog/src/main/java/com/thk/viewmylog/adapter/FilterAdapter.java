@@ -1,7 +1,6 @@
 package com.thk.viewmylog.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,33 +15,49 @@ import com.thk.viewmylog.interfaces.FilterDeleteListener;
 
 import java.util.List;
 
+/**
+ * Diese Klasse ist ein Adapter für die Elemente des RecyclerView in der LogFilterPreference
+ */
 public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.ViewHolder> {
 
     private final List<String> mTags;
     private FilterDeleteListener filterDeleteListener;
 
+    /**
+     * Konstruktor mit notwendiger Initialisierung
+     *
+     * @param mTags Liste mit Elementen der Klasse String
+     */
     public FilterAdapter(List<String> mTags) {
         this.mTags = mTags;
     }
 
+    /**
+     * Diese Klasse definiert die Views, die in einem Filter-Element enthalten sind.
+     */
     static class ViewHolder extends RecyclerView.ViewHolder {
-        // Your holder should contain a member variable
-        // for any view that will be set as you render a row
         private final TextView tagName;
         private final ImageButton delete;
 
-        // We also create a constructor that accepts the entire item row
-        // and does the view lookups to find each subview
+        /**
+         * Kontruktor zur Initialisierung der Views.
+         *
+         * @param itemView ItemView
+         */
         private ViewHolder(View itemView) {
-            // Stores the itemView in a public final member variable that can be used
-            // to access the context from any ViewHolder instance.
             super(itemView);
-
             tagName = itemView.findViewById(R.id.filterTag);
             delete = itemView.findViewById(R.id.deleteTag);
         }
     }
 
+    /**
+     * Diese Methode überschreibt die onCreateViewHolder() der Superklasse und legt das Layout für das Adapter fest.
+     *
+     * @param parent   parent
+     * @param viewType viewType
+     * @return neue ViewHolder-Instanz
+     */
     @NonNull
     @Override
     public FilterAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -53,6 +68,12 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.ViewHolder
         return new ViewHolder(filterView);
     }
 
+    /**
+     * Diese Methode überschreibt die onBindViewHolder() der Superklasse, befüllt die Views mit Werten und definiert das Verhalten der Views.
+     *
+     * @param holder   holder
+     * @param position position
+     */
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         String tag = mTags.get(position);
@@ -71,12 +92,22 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.ViewHolder
         });
     }
 
+    /**
+     * Diese Methode überschreibt die getItemCount() der Superklasse und gibt die Anzahl der Elemente in der mTags-Liste zurück.
+     *
+     * @return Anzahl der Elemente in der logList.
+     */
     @Override
     public int getItemCount() {
         return mTags.size();
     }
 
-    public void setFilterDeleteListener(FilterDeleteListener filterDeleteListener){
+    /**
+     * Setzt den übergebenen Listener als filterDeleteListener
+     *
+     * @param filterDeleteListener filterDeleteListener
+     */
+    public void setFilterDeleteListener(FilterDeleteListener filterDeleteListener) {
         this.filterDeleteListener = filterDeleteListener;
     }
 

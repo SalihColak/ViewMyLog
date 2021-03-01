@@ -22,6 +22,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Diese Klasse ist ein Adapter für die Elemente des RecyclerView recyclerView in der LogViewActivity.
+ */
 public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.ViewHolder> {
 
     private final List<Log> logList;
@@ -32,6 +35,13 @@ public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.
     private boolean CURRENTLY_SEARCHING = false;
     private String searchQuery;
 
+
+    /**
+     * Konstruktor mit notwendiger Initialisierung
+     *
+     * @param logList        Liste mit Elementen der Klasse com.thk.viewmylog.entities.Log
+     * @param parentActivity Referenz auf die ParentActivity
+     */
     public ActivityLogAdapter(List<Log> logList, Activity parentActivity) {
         this.logList = logList;
         logListCopy = new ArrayList<>();
@@ -39,6 +49,37 @@ public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.
         logDetailView = new LogDetailView(parentActivity);
     }
 
+    /**
+     * Diese Klasse definiert die Views, die in einer Log-Nachricht enthalten sind.
+     */
+    static class ViewHolder extends RecyclerView.ViewHolder {
+
+        private final TextView tag;
+        private final TextView message;
+        private final TextView tid;
+        private final TextView pid;
+        private final LinearLayout logBackground;
+
+        /**
+         * Kontruktor zur Initialisierung der Views.
+         *
+         * @param itemView ItemView
+         */
+        private ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            pid = itemView.findViewById(R.id.aPid);
+            tid = itemView.findViewById(R.id.aTid);
+            tag = itemView.findViewById(R.id.aLogTag);
+            message = itemView.findViewById(R.id.aLogMessage);
+            logBackground = itemView.findViewById(R.id.aLogBackground);
+        }
+    }
+
+    /**
+     * Methode zur Filterung der angezeigten Log-Meldungen nach Tag und Nachricht
+     *
+     * @param query Suchfilter
+     */
     public void filter(String query) {
         logList.clear();
         if (query.isEmpty()) {
@@ -57,30 +98,22 @@ public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.
         notifyDataSetChanged();
     }
 
+    /**
+     * Diese Methode löscht alle Elemente aus der RecyclerView und aus der logList.
+     */
     public void deleteAll() {
         logList.clear();
         logListCopy.clear();
         notifyDataSetChanged();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
-
-        private final TextView tag;
-        private final TextView message;
-        private final TextView tid;
-        private final TextView pid;
-        private final LinearLayout logBackground;
-
-        private ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            pid = itemView.findViewById(R.id.aPid);
-            tid = itemView.findViewById(R.id.aTid);
-            tag = itemView.findViewById(R.id.aLogTag);
-            message = itemView.findViewById(R.id.aLogMessage);
-            logBackground = itemView.findViewById(R.id.aLogBackground);
-        }
-    }
-
+    /**
+     * Diese Methode überschreibt die onCreateViewHolder() der Superklasse und legt das Layout für das Adapter fest.
+     *
+     * @param parent   parent
+     * @param viewType viewType
+     * @return neue ViewHolder-Instanz
+     */
     @NonNull
     @Override
     public ActivityLogAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -91,6 +124,12 @@ public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.
         return new ViewHolder(popupLogView);
     }
 
+    /**
+     * Diese Methode überschreibt die onBindViewHolder() der Superklasse, befüllt die Views mit Werten und definiert das Verhalten der Views.
+     *
+     * @param holder   holder
+     * @param position position
+     */
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final LinearLayout logBackground = holder.logBackground;
@@ -143,16 +182,26 @@ public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.
         });
     }
 
+    /**
+     * Fügt log nach einer Tag-Filterung in die logList ein.
+     *
+     * @param log Einzufügende Log-Instanz
+     */
     public void addItem(Log log) {
-        filterNegative(log);
-        if(CURRENTLY_SEARCHING){
+        negativeFilter(log);
+        if (CURRENTLY_SEARCHING) {
             filter(searchQuery);
         }
     }
 
-    private void filterNegative(Log log) {
+    /**
+     * Filtert eingehende Log-Meldungen nach Tag und Log-Level und fügt diese der logList ein.
+     *
+     * @param log log
+     */
+    private void negativeFilter(Log log) {
         Set<String> negativeFilters = preferences.getStringSet("negativeLogFilter", new HashSet<String>());
-        Set<String> loglevel = preferences.getStringSet("logLevel",new HashSet<String>());
+        Set<String> loglevel = preferences.getStringSet("logLevel", new HashSet<String>());
         if (!negativeFilters.contains(log.getTag().toLowerCase()) && loglevel.contains(log.getLevel().toLowerCase())) {
             logList.add(log);
             logListCopy.add(log);
@@ -160,6 +209,11 @@ public class ActivityLogAdapter extends RecyclerView.Adapter<ActivityLogAdapter.
         }
     }
 
+    /**
+     * Diese Methode überschreibt die getItemCount() der Superklasse und gibt die Anzahl der Elemente in der logList zurück.
+     *
+     * @return Anzahl der Elemente in der logList.
+     */
     @Override
     public int getItemCount() {
         return logList.size();

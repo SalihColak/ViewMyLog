@@ -16,12 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.thk.viewmylog.activties.LogViewActivity"
-            android:parentActivityName=".MainActivity"
-            ></activity>
-        <activity android:name="com.thk.viewmylog.activties.SettingsActivity"
-            android:parentActivityName=".MainActivity"
-            ></activity>
+        <activity
+            android:name="com.thk.viewmylog.activties.LogViewActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name="com.thk.viewmylog.activties.SettingsActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

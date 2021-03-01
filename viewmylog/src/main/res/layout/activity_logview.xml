@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:layout_gravity="center|bottom"
-            android:text="Autoscroll"
+            android:text="@string/autoscroll"
             android:textSize="12sp"
             android:textColor="#333">
         </Button>

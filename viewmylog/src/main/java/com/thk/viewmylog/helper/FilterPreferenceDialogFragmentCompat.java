@@ -21,45 +21,53 @@ import com.thk.viewmylog.interfaces.FilterDeleteListener;
 
 import java.util.List;
 
+/**
+ * Diese Klasse definiert das Verhalten des DialogFragments für die LogFilterPreference
+ */
 public class FilterPreferenceDialogFragmentCompat extends PreferenceDialogFragmentCompat {
 
     private LinearLayout linearLayout;
     private List<String> filterTagList;
     private FilterAdapter filterAdapter;
 
+    /**
+     * Diese Methode überschreibt die onDialogClosed() der Superklasse und speichert Nutzereingaben der LogFilterPreference
+     * @param positiveResult positiveResult
+     */
     @Override
     public void onDialogClosed(boolean positiveResult) {
         if (positiveResult) {
-            // generate value to save
-
-            // Get the related Preference and save the value
             DialogPreference preference = getPreference();
             if (preference instanceof LogFilterPreference) {
                 LogFilterPreference logFilterPreference = ((LogFilterPreference) preference);
-                // This allows the client to ignore the user value.
                 if (logFilterPreference.callChangeListener(filterTagList)) {
-                    // Save the value
                     logFilterPreference.setFilterTags(filterTagList);
                 }
             }
         }
     }
 
+    /**
+     * Erstellt eine neue Instanz dieser Klasse
+     * @param key key
+     * @return neue FilterPreferenceDialogFragmentCompat-Instanz
+     */
     public static FilterPreferenceDialogFragmentCompat newInstance(String key) {
-        final FilterPreferenceDialogFragmentCompat
-                fragment = new FilterPreferenceDialogFragmentCompat();
+        final FilterPreferenceDialogFragmentCompat fragment = new FilterPreferenceDialogFragmentCompat();
         final Bundle b = new Bundle(1);
         b.putString(ARG_KEY, key);
         fragment.setArguments(b);
-
         return fragment;
     }
 
+    /**
+     * Diese Methode überschreibt die onBindDialogView() der Superklasse und initialisiert die RecyclerView für die LogFilterPreference
+     * @param view view
+     */
     @Override
     protected void onBindDialogView(final View view) {
         super.onBindDialogView(view);
         RecyclerView mRecyclerView = view.findViewById(R.id.rvNegativeFilter);
-
 
         linearLayout = view.findViewById(R.id.addFilter);
         if (mRecyclerView == null) {
@@ -89,6 +97,11 @@ public class FilterPreferenceDialogFragmentCompat extends PreferenceDialogFragme
 
     }
 
+    /**
+     * Fügt einen neuen Filter der Liste hinzu.
+     * @param view view
+     * @param preference preference
+     */
     private void addTagFilter(final View view, final Preference preference){
         linearLayout.setOnClickListener(new View.OnClickListener() {
 

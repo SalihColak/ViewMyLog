@@ -11,25 +11,25 @@
             <item
                 android:id="@+id/logActivity"
                 android:icon="@drawable/ic_baseline_open_in_new_24"
-                android:title="LogActivity"
+                android:title="@string/logactivity"
                 app:showAsAction="ifRoom">
             </item>
             <item
                 android:id="@+id/logPopup"
                 android:icon="@drawable/ic_baseline_popup_24"
-                android:title="PopupWindow"
+                android:title="@string/popupwindow"
                 app:showAsAction="ifRoom">
             </item>
             <item
                 android:id="@+id/lifecycle"
                 android:icon="@drawable/ic_lifecycle_black_24dp"
-                android:title="Lifecycle Track"
+                android:title="@string/lifecycle_track"
                 app:showAsAction="ifRoom">
             </item>
             <item
                 android:id="@+id/userSettings"
                 android:icon="@drawable/ic_settings_black_24dp"
-                android:title="Einstellungen"
+                android:title="@string/einstellungen"
                 app:showAsAction="ifRoom">
             </item>
         </menu>
