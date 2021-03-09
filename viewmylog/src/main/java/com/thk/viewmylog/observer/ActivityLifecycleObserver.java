@@ -1,4 +1,4 @@
-package com.thk.viewmylog.helper;
+package com.thk.viewmylog.observer;
 
 import android.app.Activity;
 import android.content.SharedPreferences;

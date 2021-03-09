@@ -17,7 +17,7 @@ import androidx.preference.SwitchPreference;
 import com.thk.viewmylog.R;
 import com.thk.viewmylog.helper.FilterPreferenceDialogFragmentCompat;
 import com.thk.viewmylog.helper.LogFilterPreference;
-import com.thk.viewmylog.views.LogToast;
+import com.thk.viewmylog.views.LogToastView;
 
 /**
  * Diese Klasse definiert die Funktionen der SettingsActivity.
@@ -64,11 +64,11 @@ public class SettingsActivity extends AppCompatActivity {
             toast.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    LogToast logToast = LogToast.getInstance(getContext());
+                    LogToastView logToastView = LogToastView.getInstance(getContext());
                     if ((boolean) newValue) {
-                        logToast.registerToast(preferences.getString("logToastTag", "tag"));
+                        logToastView.registerToast(preferences.getString("logToastTag", "tag"));
                     } else {
-                        logToast.unregisterToast();
+                        logToastView.unregisterToast();
                     }
                     return true;
                 }
@@ -97,9 +97,9 @@ public class SettingsActivity extends AppCompatActivity {
                             return false;
                         }
                         if (preference.getKey().equals("logToastTag")) {
-                            LogToast logToast = LogToast.getInstance(getContext());
-                            logToast.unregisterToast();
-                            logToast.registerToast((String) newValue);
+                            LogToastView logToastView = LogToastView.getInstance(getContext());
+                            logToastView.unregisterToast();
+                            logToastView.registerToast((String) newValue);
                         }
                         return true;
                     }

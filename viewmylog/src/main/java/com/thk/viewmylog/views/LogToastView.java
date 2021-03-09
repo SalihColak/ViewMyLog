@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Diese Klasse dient dazu eingehende Log-Meldungen, nach einem bestimmten Tag gefiltert, als Toast-Meldung auszugeben.
  */
-public class LogToast {
+public class LogToastView {
 
     private final Context context;
     private String tag;
@@ -25,28 +25,28 @@ public class LogToast {
     private final List<Toast> toastList;
 
     @SuppressLint("StaticFieldLeak")
-    private static LogToast logToast;
+    private static LogToastView logToastView;
 
     /**
      * Konstruktor mit Initialisierung
      * @param context context
      */
-    private LogToast(Context context) {
+    private LogToastView(Context context) {
         this.context = context;
         toastList = new ArrayList<>();
         tag = "tag";
     }
 
     /**
-     * Diese Methode gibt die einzige LogToast-Instanz zurück und generiert sie bei Bedarf.
+     * Diese Methode gibt die einzige LogToastView-Instanz zurück und generiert sie bei Bedarf.
      * @param context context
-     * @return LogToast-Instanz
+     * @return LogToastView-Instanz
      */
-    public static LogToast getInstance(Context context) {
-        if (logToast == null) {
-            logToast = new LogToast(context);
+    public static LogToastView getInstance(Context context) {
+        if (logToastView == null) {
+            logToastView = new LogToastView(context);
         }
-        return logToast;
+        return logToastView;
     }
 
     /**

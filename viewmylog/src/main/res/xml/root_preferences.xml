@@ -43,7 +43,7 @@
         app:iconSpaceReserved="false">
 
         <SwitchPreference
-            app:key="logToast"
+            app:key="logToastView"
             app:title="@string/log_Toast_title"
             app:defaultValue="false"
             app:icon="@drawable/ic_toast"
@@ -54,7 +54,7 @@
         <EditTextPreference
             app:key="logToastTag"
             app:title="@string/log_callback_tag_title"
-            app:dependency="logToast"
+            app:dependency="logToastView"
             android:defaultValue="tag"
             app:useSimpleSummaryProvider="true"
             app:icon="@drawable/ic_edit_black_24dp">

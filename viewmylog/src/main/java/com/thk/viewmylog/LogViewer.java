@@ -12,9 +12,9 @@ import androidx.preference.PreferenceManager;
 
 import com.thk.viewmylog.activties.LogViewActivity;
 import com.thk.viewmylog.activties.SettingsActivity;
-import com.thk.viewmylog.helper.ActivityLifecycleObserver;
+import com.thk.viewmylog.observer.ActivityLifecycleObserver;
 import com.thk.viewmylog.views.LogPopupView;
-import com.thk.viewmylog.views.LogToast;
+import com.thk.viewmylog.views.LogToastView;
 
 /**
  * Diese Klasse ist die Schnittstelle zwischen der App und der Android Library.
@@ -39,8 +39,8 @@ public class LogViewer {
         logPopupView = new LogPopupView(parentActivity);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(parentActivity.getApplicationContext());
         if(preferences.getBoolean("logToast",false)) {
-            LogToast logToast = LogToast.getInstance(parentActivity.getApplicationContext());
-            logToast.registerToast(preferences.getString("logToastTag","tag"));
+            LogToastView logToastView = LogToastView.getInstance(parentActivity.getApplicationContext());
+            logToastView.registerToast(preferences.getString("logToastTag","tag"));
         }
     }
 
