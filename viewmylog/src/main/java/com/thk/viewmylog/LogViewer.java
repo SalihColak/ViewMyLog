@@ -10,8 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.preference.PreferenceManager;
 
-import com.thk.viewmylog.activties.LogViewActivity;
-import com.thk.viewmylog.activties.SettingsActivity;
+import com.thk.viewmylog.activities.LogViewActivity;
+import com.thk.viewmylog.activities.SettingsActivity;
 import com.thk.viewmylog.observer.ActivityLifecycleObserver;
 import com.thk.viewmylog.views.LogPopupView;
 import com.thk.viewmylog.views.LogToastView;

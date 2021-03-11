@@ -1,4 +1,4 @@
-package com.thk.viewmylog.activties;
+package com.thk.viewmylog.activities;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -59,8 +59,8 @@ public class SettingsActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
 
             preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            final SwitchPreference toast = findPreference("logToast");
-            assert toast != null;
+            final SwitchPreference toast = findPreference("logToastView");
+
             toast.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {

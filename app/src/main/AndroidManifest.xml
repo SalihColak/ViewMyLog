@@ -17,10 +17,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.thk.viewmylog.activties.LogViewActivity"
+            android:name="com.thk.viewmylog.activities.LogViewActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.thk.viewmylog.activties.SettingsActivity"
+            android:name="com.thk.viewmylog.activities.SettingsActivity"
             android:parentActivityName=".MainActivity" />
     </application>
 

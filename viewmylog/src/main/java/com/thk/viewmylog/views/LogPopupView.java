@@ -183,6 +183,10 @@ public class LogPopupView  {
      * Setzt die Drag & Drop Animation des PopupWindows um.
      */
     private void setPopupViewAnimation() {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        parentActivity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        final int borderX = displayMetrics.widthPixels;
+        final int borderY = displayMetrics.heightPixels;
         popupView.setOnTouchListener(new View.OnTouchListener() {
             private float mDx;
             private float mDy;
@@ -192,6 +196,8 @@ public class LogPopupView  {
             @SuppressLint("ClickableViewAccessibility")
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                android.util.Log.d("pw","borderX: "+borderX+" BorderY: "+borderY);
+                android.util.Log.d("pw","myX: "+mCurrentX+" myY: "+mCurrentY);
                 switch (event.getAction()) {
 
                     case MotionEvent.ACTION_DOWN:
@@ -201,6 +207,10 @@ public class LogPopupView  {
                     case MotionEvent.ACTION_MOVE:
                         mCurrentX = (int) (event.getRawX() + mDx);
                         mCurrentY = (int) (event.getRawY() + mDy);
+                        if(mCurrentX> borderX/2.2) mCurrentX = (int)(borderX/2.2);
+                        if(mCurrentX < -borderX/2.2) mCurrentX = (int)(-borderX/2.2);
+                        if(mCurrentY> borderY/2.2) mCurrentY = (int)(borderY/2.2);
+                        if(mCurrentY < -borderY/2.2) mCurrentY = (int)(-borderY/2.2);
                         popupWindow.update(mCurrentX, mCurrentY, -1, -1);
                         break;
                 }

@@ -1,4 +1,4 @@
-package com.thk.viewmylog.activties;
+package com.thk.viewmylog.activities;
 
 import android.Manifest;
 import android.app.Activity;

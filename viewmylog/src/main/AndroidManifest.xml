@@ -6,7 +6,7 @@
 
     <application>
         <activity
-            android:name=".activties.SettingsActivity"
+            android:name=".activities.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme" />
     </application>
