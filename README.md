@@ -89,4 +89,4 @@ public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 }
 ````
 
-![OptionsMenu](/images/screen (5).jpg?raw=true "OptionsMenu")
+![OptionsMenu](https://raw.github.com/SalihColak/ViewMyLog/master/images/screen (5).jpg?raw=true "OptionsMenu")
