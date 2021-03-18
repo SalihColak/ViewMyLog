@@ -17,6 +17,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import static android.preference.PreferenceManager.getDefaultSharedPreferences;
+
 public class MainActivity extends AppCompatActivity {
 
     LogViewer logViewer;
@@ -25,39 +27,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /*SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.clear();
-        editor.commit();*/
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    while (true){
-                        Thread.sleep(7000);
-                        Log.d("test","merhaba");
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-
-        /*try {
-            Process process = Runtime.getRuntime().exec("system/bin/logcat -d -v long");
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line;
-            while((line = bufferedReader.readLine()) != null){
-                Log.d("ls",line);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
-
         logViewer = new LogViewer(this);
+
     }
 
     @Override

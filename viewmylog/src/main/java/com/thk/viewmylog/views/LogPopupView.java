@@ -116,6 +116,10 @@ public class LogPopupView  {
             setPopupViewAnimation();
             setLogReader();
         }
+        else{
+            popupWindow.dismiss();
+            isCreated = false;
+        }
     }
 
     /**
@@ -196,8 +200,6 @@ public class LogPopupView  {
             @SuppressLint("ClickableViewAccessibility")
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                android.util.Log.d("pw","borderX: "+borderX+" BorderY: "+borderY);
-                android.util.Log.d("pw","myX: "+mCurrentX+" myY: "+mCurrentY);
                 switch (event.getAction()) {
 
                     case MotionEvent.ACTION_DOWN:

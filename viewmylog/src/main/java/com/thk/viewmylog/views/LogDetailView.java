@@ -114,8 +114,6 @@ public class LogDetailView {
             time.setText("");
         }
 
-        android.util.Log.d("test","Datetime: "+datetime);
-
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -61,18 +61,20 @@ public class SettingsActivity extends AppCompatActivity {
             preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             final SwitchPreference toast = findPreference("logToastView");
 
-            toast.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    LogToastView logToastView = LogToastView.getInstance(getContext());
-                    if ((boolean) newValue) {
-                        logToastView.registerToast(preferences.getString("logToastTag", "tag"));
-                    } else {
-                        logToastView.unregisterToast();
+            if (toast != null) {
+                toast.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                    @Override
+                    public boolean onPreferenceChange(Preference preference, Object newValue) {
+                        LogToastView logToastView = LogToastView.getInstance(getContext());
+                        if ((boolean) newValue) {
+                            logToastView.registerToast(preferences.getString("logToastTag", "tag"));
+                        } else {
+                            logToastView.unregisterToast();
+                        }
+                        return true;
                     }
-                    return true;
-                }
-            });
+                });
+            }
         }
 
         /**

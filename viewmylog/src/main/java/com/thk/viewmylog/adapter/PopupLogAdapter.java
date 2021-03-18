@@ -18,6 +18,7 @@ import com.thk.viewmylog.R;
 import com.thk.viewmylog.entities.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -191,7 +192,8 @@ public class PopupLogAdapter extends RecyclerView.Adapter<PopupLogAdapter.ViewHo
      */
     public void negativeFilter(Log log) {
         Set<String> negativeFilters = preferences.getStringSet("negativeLogFilter", new HashSet<String>());
-        Set<String> loglevel = preferences.getStringSet("logLevel", new HashSet<String>());
+        Set<String> defaultLogLevel = new HashSet<>(Arrays.asList("v","d","i","w","e","wtf"));
+        Set<String> loglevel = preferences.getStringSet("logLevel", defaultLogLevel);
         if (!negativeFilters.contains(log.getTag().toLowerCase()) && loglevel.contains(log.getLevel().toLowerCase())) {
             logList.add(log);
             notifyItemInserted(logList.size() - 1);
