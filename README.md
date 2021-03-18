@@ -89,4 +89,14 @@ public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 }
 ````
 
-![OptionsMenu](https://raw.github.com/SalihColak/ViewMyLog/master/images/screen (5).jpg?raw=true "OptionsMenu")
+## Screenshots
+
+
+<img  src="https://raw.github.com/SalihColak/ViewMyLog/master/images/screen5.jpg?raw=true" alt="screen5" width="300"/>
+<img  src="https://raw.github.com/SalihColak/ViewMyLog/master/images/screen3.jpg?raw=true" alt="screen5" width="300"/>
+<img  src="https://raw.github.com/SalihColak/ViewMyLog/master/images/screen2.jpg?raw=true" alt="screen5" width="300"/>
+<img  src="https://raw.github.com/SalihColak/ViewMyLog/master/images/screen6.jpg?raw=true" alt="screen5" width="300"/>
+<img  src="https://raw.github.com/SalihColak/ViewMyLog/master/images/screen8.jpg?raw=true" alt="screen5" width="300"/>
+<img  src="https://raw.github.com/SalihColak/ViewMyLog/master/images/screen7.jpg?raw=true" alt="screen5" width="300"/>
+<img  src="https://raw.github.com/SalihColak/ViewMyLog/master/images/screen9.jpg?raw=true" alt="screen5" width="300"/>
+<img  src="https://raw.github.com/SalihColak/ViewMyLog/master/images/screen10.jpg?raw=true" alt="screen5" width="300"/>
