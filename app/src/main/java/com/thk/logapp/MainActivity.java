@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 logViewer.startLogViewActivity();
                 break;
             case R.id.logPopup:
-                logViewer.startPopupWindow();
+                logViewer.togglePopupWindow();
                 break;
             case R.id.lifecycle:
                 logViewer.trackActivityLifecycle(this);

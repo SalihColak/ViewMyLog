@@ -79,8 +79,9 @@ public class LogViewer {
 
     /**
      * Öffnet ein PopupWindow, in der eingehende Log-Meldungen angezeigt werden.
+     * Falls bereits ein PopupWindow geöffnet ist wird es wieder geschlossen.
      */
-    public void startPopupWindow() {
+    public void togglePopupWindow() {
         logPopupView.showPopupView();
     }
 }
