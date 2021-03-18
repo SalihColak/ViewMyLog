@@ -27,6 +27,7 @@ public class LogViewer {
     private final ActivityLifecycleObserver activityLifecycleObserver;
     private final LogPopupView logPopupView;
     private boolean lifecycleRegistered;
+    private final LifecycleOwner lifecycleOwner;
 
     /**
      * Konstruktor mit Initialisierung
@@ -34,6 +35,7 @@ public class LogViewer {
      */
     public LogViewer(@NonNull Activity parentActivity){
         this.parentActivity = parentActivity;
+        this.lifecycleOwner = (LifecycleOwner) parentActivity;
         activityLifecycleObserver = new ActivityLifecycleObserver(parentActivity);
         lifecycleRegistered = false;
         logPopupView = new LogPopupView(parentActivity);
@@ -63,9 +65,8 @@ public class LogViewer {
     /**
      * Falls der übergebene LifecycleOwner nicht beobachtet wird, so wird dieser mit Aufruf dieser Methode bebachtet.
      * Falls es bebachtet wird, so wird es nicht mehr beobachtet.
-     * @param lifecycleOwner lifecycleOwner
      */
-    public void trackActivityLifecycle(@NonNull LifecycleOwner lifecycleOwner){
+    public void trackActivityLifecycle(){
         final Context context = parentActivity.getApplicationContext();
         if(!lifecycleRegistered){
             Toast.makeText(context,"Lifecycle Tracking ist jetzt aktiviert",Toast.LENGTH_SHORT).show();

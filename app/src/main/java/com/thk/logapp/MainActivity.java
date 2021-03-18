@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 logViewer.togglePopupWindow();
                 break;
             case R.id.lifecycle:
-                logViewer.trackActivityLifecycle(this);
+                logViewer.trackActivityLifecycle();
                 break;
             case R.id.userSettings:
                 logViewer.startSettings();
