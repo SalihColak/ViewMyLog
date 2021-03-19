@@ -16,12 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.thk.viewmylog.activities.LogViewActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name="com.thk.viewmylog.activities.SettingsActivity"
-            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

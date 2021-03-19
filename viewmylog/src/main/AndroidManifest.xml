@@ -9,6 +9,11 @@
             android:name=".activities.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.LogViewActivity"
+            android:label="@string/title_activity_logview"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>

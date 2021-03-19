@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">ViewMyLog</string>
     <string name="title_activity_settings">Einstellungen</string>
+    <string name="title_activity_logview">ViewMyLog</string>
 
     <!-- Preference Titles -->
     <string name="appearance_header">Aussehen PopupWindow</string>
