@@ -44,6 +44,16 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     /**
+     * Diese Methode überschreibt die onStop() der Superklasse und beendet die Activity.
+     * @return true
+     */
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
+
+    /**
      * Diese Klasse definiert das Verhalten der einzelnen Präferenzen der SettingsActivtiy.
      */
     public static class SettingsFragment extends PreferenceFragmentCompat {
