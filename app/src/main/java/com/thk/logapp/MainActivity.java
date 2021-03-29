@@ -21,10 +21,12 @@ import static android.preference.PreferenceManager.getDefaultSharedPreferences;
 
 public class MainActivity extends AppCompatActivity {
 
+    LogViewer logViewer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        logViewer = new LogViewer(this);
     }
 
     @Override
@@ -35,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        LogViewer logViewer = new LogViewer(this);
         switch (item.getItemId()){
             case R.id.logActivity:
                 logViewer.startLogViewActivity();
