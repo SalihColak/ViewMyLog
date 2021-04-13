@@ -32,17 +32,6 @@ dependencies {
 
 ````
 
-### Step 3 (optional)
-Add the `SettingsActivity` and the `LogViewerActivity` to your `AndroidManifest.xml` for full functionality. 
-
-````xml
-<application ...>
-    ....
-    <activity android:name="com.thk.viewmylog.activties.LogViewActivity"/>
-    <activity android:name="com.thk.viewmylog.activties.SettingsActivity"/>
-</application>
-````
-
 ## Usage
 
 Create an instance of LogViewer in your activity as following.
