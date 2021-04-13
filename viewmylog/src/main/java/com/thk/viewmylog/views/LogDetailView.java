@@ -151,7 +151,7 @@ public class LogDetailView {
                 colorText = R.color.white;
                 break;
             case "WTF":
-                logLevel = "What a Terrible Failure";
+                logLevel = "Assert";
                 colorBg = R.color.purple;
                 colorText = R.color.white;
                 break;

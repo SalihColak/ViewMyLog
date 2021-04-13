@@ -40,7 +40,7 @@
         <item>Info</item>
         <item>Warn</item>
         <item>Error</item>
-        <item>What a Terrible Failure</item>
+        <item>Assert</item>
     </string-array>
 
     <string-array name="loglevel_values">
