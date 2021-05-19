@@ -27,7 +27,7 @@ Add the dependency to this library in your Module Build File `build.gradle`.
 
 ````gradle
 dependencies {
-    implementation 'com.github.SalihColak:LogApp:1.0'
+    implementation 'com.github.SalihColak:ViewMyLog:1.0'
 }
 
 ````
